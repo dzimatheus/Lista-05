@@ -1,0 +1,83 @@
+package ToString;
+public class Bancos {
+    private String fabricante;
+
+    public Bancos(String fabricante) {
+        this.fabricante = fabricante;
+    }
+
+    @Override
+    public String toString() {
+        return fabricante;
+    }
+}
+
+
+
+
+package ToString;
+
+public class Carro {
+    private String fabricante;
+    private String marca;
+    private String modelo;
+    private Motor motor;
+    private Bancos bancos;
+
+    public Carro(String fabricante, String marca, String modelo, Motor motor) {
+        this.fabricante = fabricante;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.motor = motor;
+    }
+
+    public void setBancos(Bancos bancos) {
+        this.bancos = bancos;
+    }
+
+    @Override
+    public String toString() {
+        return fabricante + " " + marca + " " + modelo + " " + motor + " - Bancos: " + bancos;
+    }
+}
+
+
+
+
+
+package ToString;
+
+public class Motor {
+    private String modelo;
+
+    public Motor(String modelo) {
+        this.modelo = modelo;
+    }
+
+    @Override
+    public String toString() {
+        return modelo;
+    }
+}
+
+
+
+
+package ToString;
+
+public class CarroApp {
+    public static void main(String args[]) {
+        Bancos b1 = new Bancos("GM");
+
+        Motor m1 = new Motor("2.0 16v");
+        Carro c1 = new Carro("GM", "Astra", "Chevrolet", m1);
+        c1.setBancos(b1);
+
+        Motor m2 = new Motor("V6 4.1");
+        Carro c2 = new Carro("GM", "Opala", "Chevrolet", m2);
+        c2.setBancos(b1);
+
+        System.out.println(c1);
+        System.out.println(c2);
+    }
+}
