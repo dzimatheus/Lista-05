@@ -1,0 +1,93 @@
+package Agregacao;
+
+public class Bancos {
+    private String fabricante;
+
+    public Bancos(String fabricante){
+        this.fabricante = fabricante;
+    }
+    public String getFabricante(){
+        return this.fabricante;
+    }
+}
+
+
+
+package Agregacao;
+
+public class Motor {
+    private String tipo;
+
+    public Motor(String tipo){
+        this.tipo = tipo;
+    }
+    public String getTipo(){
+        return tipo;
+    }
+}
+
+
+
+package Agregacao;
+
+public class Carro {
+    private String marca;
+    private String modelo;
+    private String fabricante;
+    private Motor motor;
+    private Bancos bancos; 
+
+    public Carro(String marca, String modelo, String fabricante, Motor motor, Bancos bancos) {
+        this.fabricante = fabricante;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.motor = motor;
+        this.bancos = bancos;
+    }
+    public void setBancos(Bancos bancos) {
+        this.bancos = bancos;
+    }
+    public String getMarca(){
+        return marca;
+    }
+    public String getModelo(){
+        return modelo;
+    }
+    public String getFabricante(){
+        return fabricante;
+    }
+    public String getTipoMotor(){
+        return motor.getTipo();
+    }
+    public Bancos getBancos() {
+        return bancos;
+    }
+}
+
+
+
+package Agregacao;
+
+public class CarroApp {
+    public static void main(String args[]) {
+        Bancos b1 = new Bancos("GM");
+
+        Motor m1 = new Motor("2.0 16v");
+        Carro c1 = new Carro("GM", "Astra", "Chevrolet", m1, b1);
+        c1.setBancos(b1);
+
+        Motor m2 = new Motor("V6 4.1");
+        Carro c2 = new Carro("GM", "Opala", "Chevrolet", m2, b1);
+        c2.setBancos(b1);
+
+        System.out.println(c1.getFabricante() + " " + c1.getMarca() + " " + c1.getModelo() + " " + c1.getTipoMotor() +
+                " - Bancos: " + c1.getBancos().getFabricante());
+
+        System.out.println(c2.getFabricante() + " " + c2.getMarca() + " " + c2.getModelo() + " " + c2.getTipoMotor() +
+                " - Bancos: " + c2.getBancos().getFabricante());
+    }
+}
+
+
+
+
