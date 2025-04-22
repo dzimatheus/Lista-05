@@ -1,0 +1,89 @@
+package Associacao;
+
+public class Dispositivo {
+    private int codigo;
+    private String nome;
+    private String pessoa;
+
+    public Dispositivo (int codigo, String nome, String pessoa){
+        this.codigo = codigo;
+        this.nome = nome;
+        this.pessoa = pessoa;
+    }
+
+    public int getCodigo(){
+        return this.codigo;
+    }
+    public void setCodigo(int codigo){
+        this.codigo = codigo;
+    }
+    public String getNome(){
+        return this.nome;
+    }
+    public void setNome(String nome){
+        this.nome = nome;
+    }
+    public String getPessoa(){
+        return this.pessoa;
+    }
+    public void setPessoa(String pessoa){
+        this.pessoa = pessoa;
+    }
+    public void usar(){
+        System.out.println("Usando o dispositivo " + nome);
+    }
+}
+
+
+
+
+package Associacao;
+
+public class Usuario {
+    private int matricula;
+    private String nome;
+    private Dispositivo dispositivo;
+
+    public Usuario(int matricula, String nome){
+        this.matricula = matricula;
+        this.nome = nome;
+    }
+    public int getMatricula(){
+        return this.matricula;
+    }
+    public void setMatricula(int matricula){
+        this.matricula = matricula;
+    }
+    public String getNome(){
+        return this.nome;
+    }
+    public void setNome(String nome){
+        this.nome = nome;
+    }
+    public void setDispositivo(Dispositivo dispositivo){
+        this.dispositivo = dispositivo;
+    }
+    public void trabalhar(){
+        System.out.println(this.nome + " esta usando o dispositivo " + dispositivo.getNome());
+    }
+}
+
+
+
+
+package Associacao;
+
+public class AppTrabalho {
+    public static void main(String[] args){
+        Dispositivo dispositivo1 = new Dispositivo(1, "Notebook", "Theodoro");
+        Dispositivo dispositivo2 = new Dispositivo(2, "Celular", "Ana");
+
+        Usuario usuario1 = new Usuario(10, "Theodoro");
+        Usuario usuario2 = new Usuario(11, "Ana");
+
+        usuario1.setDispositivo(dispositivo1);
+        usuario1.trabalhar();
+        usuario2.setDispositivo(dispositivo2);
+        usuario2.trabalhar();
+    }
+}
